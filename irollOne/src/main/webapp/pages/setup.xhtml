@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="content">
+		
+			 <div id="bpg">
+			    <div id="mainDiv">      
+			        <div id="svgDiv" style="font-size:10px"></div>    
+			        <!-- div id="toolTip" class="tooltip" style="opacity:0; width:200px; height:90px; position:absolute;">
+			            <div id="header1" class="header3"></div>
+			            <div class="header-rule"></div>
+			            <div id="head" class="header"></div>
+			            <div class="header-rule"></div>
+			            <div  id="header2" class="header2"></div>
+			            <div  class="tooltipTail"></div>
+			        </div-->
+			    </div>
+			</div>
+			
+			<p:galleria style="margin-left:400px;" value="#{apiAIAction.images}" var="image" panelWidth="500" panelHeight="5" showCaption="false">
+			    <p:graphicImage name="../../d4/images/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+			</p:galleria>
+			<br/><br/>
+			<h:form prependId="false">
+		 
+			<h:commandButton value = "Join (Free)"  action="#{apiAIAction.join}" disabled="false" rendered="true"/>
+			<h:commandButton value = "Invite Friends"  action="#{apiAIAction.join}" disabled="false" rendered="true"/><br/>
+ 			<h:commandButton value = "Roll (Info)"  action="#{apiAIAction.rollInfo}" />
+ 			<h:commandButton value = "Sponsor (Info)"  action="#{apiAIAction.sponsorInfo}"/>
+ 			
+			</h:form>
+			
+			
+	<script type="text/javascript" src="../d4/scripts/app/globals.js"></script>
+    <script type="text/javascript" src="../d4/scripts/app/initialize.js"></script>
+    <script type="text/javascript" src="../d4/scripts/app/events.js"></script>
+    <script type="text/javascript" src="../d4/scripts/app/data.js"></script>
+    <script type="text/javascript" src="../d4/scripts/app/_buildChords.js"></script>
+    <script type="text/javascript" src="../d4/scripts/app/update.js"></script>
+
+    <script type="text/javascript">
+
+	//count:number of progress bar
+	var prgrCount=#{apiAIAction.prgressCount}, totalFetchCount=#{apiAIAction.totalFetchCount}, totalPplCount=#{apiAIAction.totalPplCount}, initPrgrCount=0;
+	var dataJsonObj="#{apiAIAction.dataLocation}";
+	var htmlcont=  99999999999999+" Joined.";
+	document.getElementsByClassName("secondLabel")[0].innerHTML=htmlcont
+    initialize(prgrCount, totalPplCount);
+    fetchData(dataJsonObj, totalFetchCount);
+ 
+	function run() {			
+		 if(initPrgrCount++ &lt; totalPplCount) {
+			update(0,initPrgrCount);
+		 } else {
+			initPrgrCount=0;
+			fetchData(dataJsonObj, totalFetchCount);
+		 }
+	}
+    </script>
+			
+		</ui:define>
+		
+		<ui:define name="footer">
+				Automotive 
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

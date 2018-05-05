@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="content">
+			<script> </script>
+			<h:form prependId="false">
+		<h:messages globalOnly="true"/>
+		<h:inputText id="uname" value="#{rollAuthAction.uname}" />
+		<h:inputText id="pwd" value="#{rollAuthAction.pwd}" />
+		<h:commandButton value = "TYPE!" id="send" action="#{rollAuthAction.submit}"/>
+ 
+			</h:form>
+		</ui:define>
+		
+		<ui:define name="footer">
+				 Automotive 
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>
