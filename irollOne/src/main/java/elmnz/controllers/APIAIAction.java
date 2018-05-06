@@ -1,6 +1,7 @@
 package elmnz.controllers;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +13,17 @@ import javax.servlet.http.HttpServletRequest;
  
 @ManagedBean(name="apiAIAction")
 @SessionScoped
-public class APIAIAction {
+public class APIAIAction implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8686771371142134413L;
 	private int prgressCount;
 	private int totalFetchCount;
 	private int totalPplCount;
 	private String dataLocation;
 	private int rollId=0;
-	
+	//check
 	public int getRollId() {
 		return rollId;
 	}

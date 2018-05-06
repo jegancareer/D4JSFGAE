@@ -1,14 +1,19 @@
 package elmnz.controllers;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
  
 @ManagedBean(name="rollAuthAction")
 @ViewScoped
-public class RollAuthAction extends BaseAction{
+public class RollAuthAction extends BaseAction implements Serializable{
 	 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8462832265306207460L;
 	private String pwd;
 	private String uname; 
 

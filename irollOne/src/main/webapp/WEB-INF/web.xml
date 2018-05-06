@@ -15,12 +15,29 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     
+    
+    <context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+    
+    <session-config> 
+	   <session-timeout>45</session-timeout> 
+	</session-config>
+    
   <!-- <listener>
-    <listener-class>
-        com.sun.faces.config.ConfigureListener
-    </listener-class>
-</listener>
- -->  
+	    <listener-class>
+	        com.sun.faces.config.ConfigureListener
+	    </listener-class>
+	</listener>
+	 -->  
+	 
+	 <error-page>
+	    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+	    <location>/index.html</location>
+	</error-page>
+	
+
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
